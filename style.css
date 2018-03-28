@@ -9,8 +9,6 @@ body{
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 20px;
-
-
 }
 
 .box {
@@ -19,8 +17,8 @@ body{
     border:  1px solid #bababa;
     margin-left: 50px;
     margin-right: 50px;
-
 }
+
 
 /** Map Style **/
 .interactiveMap {
@@ -47,6 +45,38 @@ body{
 .card {
     width: 99%;
     height: 120px;
+    overflow: hidden;
     background-color: white;
     border-bottom: 1px solid #bababa;
+}
+
+#rest_photo{
+    width: 30%;
+    height:100%;
+    float:left;
+    background-color: lightgrey;
+}
+
+#rest_info{
+    width:60%;
+    height: 100%;
+    float:left;
+    margin: 10px;
+}
+
+#rest_name, #rest_stars {
+    display:inline;
+}
+
+#rest_dollars, #rest_url {
+    display:inline;
+}
+
+#rest_name{
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#rest_stars {
+    color: grey;
 }
