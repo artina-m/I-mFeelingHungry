@@ -4,7 +4,7 @@ function parseLine(line){
             img_url: line["image_url"],
             url: line["url"],
             review_count: line["review_count"],
-            categories: line["categories"],
+            categories: Array(line["categories"]),
             rating: Number(line["rating"]),
             location: line["location"],
             neighborhood: line["neighborhood"],
