@@ -50,11 +50,19 @@ body{
     border-bottom: 1px solid #bababa;
 }
 
+.card:hover{
+    background-color: #efefef;
+}
+
+.photo {
+    height:100%;
+}
+
 #rest_photo{
     width: 30%;
     height:100%;
     float:left;
-    background-color: lightgrey;
+    overflow: hidden;
 }
 
 #rest_info{
@@ -79,4 +87,11 @@ body{
 
 #rest_stars {
     color: grey;
+}
+#rest_dollars {
+    color:green;
+}
+#rest_website {
+    color: grey;
+    text-decoration: none;
 }
