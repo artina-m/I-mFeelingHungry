@@ -23,35 +23,38 @@ body{
 /** Map Style **/
 .interactiveMap {
     float: left;
-    width: 60%;
+    width: 65%;
     height: 100%;
+    background-color: lightblue;
 }
 
 
 /** Card Style **/
 .results {
     float: right;
-    width: 40%;
+    width: 35%;
     height: 100%;
 }
 
 .scrollable {
+    float: right;
     overflow: auto;
     width: 100%;
     height: 100%;
-    border-left: 1px solid #bababa;
+    background-color: white;
 }
 
 .card {
     width: 99%;
-    height: 120px;
+    height: 100px;
     overflow: hidden;
     background-color: white;
-    border-bottom: 1px solid #bababa;
+    margin-bottom: 10px;
 }
 
 .card:hover{
-    background-color: #efefef;
+    background-color: white;
+    border: 2px solid #bababa;
 }
 
 .photo {
@@ -59,10 +62,13 @@ body{
 }
 
 #rest_photo{
-    width: 30%;
+    width: 100px;
     height:100%;
+    margin-left: 5px;
     float:left;
     overflow: hidden;
+    border-radius: 100px;
+    border-color: #bababa
 }
 
 #rest_info{
@@ -70,28 +76,36 @@ body{
     height: 100%;
     float:left;
     margin: 10px;
+    margin-left: 20x;
 }
 
-#rest_name, #rest_stars {
-    display:inline;
-}
 
-#rest_dollars, #rest_url {
+#rest_stars,#rest_dollars, #rest_url {
     display:inline;
 }
 
 #rest_name{
     font-size: 16px;
     font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 0px;
 }
 
-#rest_stars {
-    color: grey;
+#rest_cat {
+    margin-top:5px;
+    padding:0;
 }
+
+#rest_stars{
+    color:grey;
+}
+
 #rest_dollars {
     color:green;
 }
+
 #rest_website {
     color: grey;
     text-decoration: none;
 }
+
