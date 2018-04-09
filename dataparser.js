@@ -21,8 +21,9 @@ function parseLine(line){
 
 function createCard(d){
     // This function takes a row from a dataset
-    
     // Creates one card
+    // id = resturant name 
+    
     var card = document.createElement("div");
     card.className = "card";
     card.id = d.name;
@@ -54,7 +55,7 @@ function createCard(d){
     
     var para = document.createElement("p");
     para.id = "rest_stars"
-    var rest_stars = document.createTextNode("  " + d.rating + "  |  ");
+    var rest_stars = document.createTextNode("  " + d.rating + "   ");
     para.appendChild(rest_stars);
     restInfo.appendChild(para)
 
@@ -76,8 +77,6 @@ function createCard(d){
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
     document.getElementById("scroll").appendChild(card)
-    
-    
 }
 
 
