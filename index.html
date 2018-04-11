@@ -1,37 +1,48 @@
-<html>
-<head>
-    <title>Im Feelin' Hungry</title>
-    <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="http://d3js.org/topojson.v2.min.js"></script>
-    <link rel = "stylesheet" type="text/css" href = "style.css">
-    <script src="dataparser.js"></script>
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
-    
-<div class = "leftSide">
-    <!-- Title, Description, Filters -->
-    <p class = "mainTitle">I'm feeling ___________ </p>
-    
-    <p>Filter 1</p>
-    <p>Filter 2</p>
-    <p>Filter 3</p>
-    
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="leftSide">
+        <!-- Title, Description, Filters -->
+        <p class="mainTitle">I'm feeling ___________ </p>
 
-    
-    <p class = "subTitle">Find a place to eat</p>
-    <p class = "suppText">Lorem ipsum dolor sit amet, in vix commodo gubergren consetetur, cu duo quod insolens mnesarchum, pro dicit mentitum in. Vix iisque conclusionemque ut, eu eos omittantur consectetuer, sea ei placerat perpetua instructior.</p>
-</div>
-    
-<div class = "rightSide">
-    <!-- Visualization -->
-    <!-- Populated by dataparser.js-->
-</div>
+        <p>Filter 1</p>
+        <p>Filter 2</p>
+        <p>Filter 3</p>
+        <p class="subTitle">Find a place to eat</p>
+        <p class="suppText">Lorem ipsum dolor sit amet, in vix commodo gubergren consetetur, cu duo quod insolens mnesarchum, pro dicit mentitum in. Vix iisque conclusionemque ut, eu eos omittantur consectetuer, sea ei placerat perpetua instructior.</p>
+    </div>
+
+    <div id ="right-mount" class="rightSide">
+        <!-- Visualization -->
+        <!-- Populated by index.js-->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/topojson.v2.min.js"></script>
+    <script src="index.js"></script>
 
 </body>
 
-    
-    
-    
+
+
+
 </html>
