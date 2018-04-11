@@ -13,9 +13,8 @@ p,a {
 
 .leftSide {
     height: 100%;
-    width: 400;
+    width: 400px;
     float: left;
-    background-color: #efefef
 }
 
 .leftSide div{
@@ -41,6 +40,10 @@ p,a {
 .suppText {
     font-size: 12px;
 }
+
+
+
+
 
 .rightSide {
     height: 100%;
