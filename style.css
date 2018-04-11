@@ -42,21 +42,17 @@ p,a {
 }
 
 
-
-
-
 .rightSide {
     height: 100%;
     float: right;
+    margin-left: 50px;
     display: inline-block;
     position: absolute;
 }
 
 
+ /* Card Style */
 
-/*
-
-* Card Style *
 .results {
     float: right;
     width: 35%;
@@ -139,4 +135,3 @@ p,a {
     font-size: 14px;
 }
 
-*/
