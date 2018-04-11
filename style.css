@@ -6,36 +6,54 @@ body{
     padding: 0;
 }
 
-.header {
-    height: 200px;
-    background-color: white;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
-}
 
 p,a {
     font-family: Roboto;
 }
 
-.box {
-    overflow: hidden;
-    height: 550px;
-    border:  1px solid #bababa;
+.leftSide {
+    height: 100%;
+    width: 400;
+    float: left;
+    background-color: #efefef
+}
+
+.leftSide div{
     margin-left: 50px;
     margin-right: 50px;
 }
 
+.filterDiv{ 
+    margin-top: 50px;
+    height: 350px; 
+}
 
-/** Map Style **/
-.interactiveMap {
-    float: left;
-    width: 65%;
+.mainTitle {
+    font-size: 24px;
+    margin-top: 150px;
+}
+
+.subTitle {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.suppText {
+    font-size: 12px;
+}
+
+.rightSide {
     height: 100%;
+    float: right;
+    display: inline-block;
+    position: absolute;
 }
 
 
-/** Card Style **/
+
+/*
+
+* Card Style *
 .results {
     float: right;
     width: 35%;
@@ -118,3 +136,4 @@ p,a {
     font-size: 14px;
 }
 
+*/

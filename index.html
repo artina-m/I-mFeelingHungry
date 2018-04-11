@@ -4,36 +4,34 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="http://d3js.org/topojson.v2.min.js"></script>
     <link rel = "stylesheet" type="text/css" href = "style.css">
-    
     <script src="dataparser.js"></script>
 
 </head>
 
 <body>
     
-<div class = "header">
-    <p>I'm feeling _________</p>
-    [Instructions] <br>
-    [Description] <br>
-    [Filter Buttons] <br>
+<div class = "leftSide">
+    <!-- Title, Description, Filters -->
+    <p class = "mainTitle">I'm feeling ___________ </p>
+    
+    <p>Filter 1</p>
+    <p>Filter 2</p>
+    <p>Filter 3</p>
+    
+
+    
+    <p class = "subTitle">Find a place to eat</p>
+    <p class = "suppText">Lorem ipsum dolor sit amet, in vix commodo gubergren consetetur, cu duo quod insolens mnesarchum, pro dicit mentitum in. Vix iisque conclusionemque ut, eu eos omittantur consectetuer, sea ei placerat perpetua instructior.</p>
 </div>
     
-<div class = "box">
-    
-<div class = "interactiveMap">
-    Map
-</div>
-    
-<div class = "results">
-    
-    <div class = "scrollable" id = "scroll">
-        <!-- Populated by createCard(d) dataparser.js -->
-    </div>
-</div>
-    
+<div class = "rightSide">
+    <!-- Visualization -->
+    <!-- Populated by dataparser.js-->
 </div>
 
 </body>
 
-
+    
+    
+    
 </html>
