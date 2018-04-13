@@ -6,10 +6,36 @@ var vizSVG = d3.select(".rightSide")
       .attr("width", "100%")
       .attr("height", "100%")
 
-vizSVG.append("img")
-    .attr("scr","plate.png")
-    .attr("x", 200)
-    .attr("y", 200)
+vizSVG.append("image")
+    .attr("xlink:href","plate.png")
+    .attr("x", 150)
+    .attr("y", 350)
+    .attr("width", 500)
+    .style("z-index", 1)
+
+vizSVG.append("image")
+    .attr("xlink:href","lid.png")
+    .attr("class", "lid")
+    .attr("id", "lid")
+    .attr("x", 180)
+    .attr("y", 185)
+    .attr("width", 450)
+    .style("z-index", 2)
+
+function openLid(){
+    var lid = d3.select("#lid")
+    lid.transition()
+    .attr("transform", "rotate(45)")
+    .attr("x", 300).attr("y", -550)
+}
+
+function closeLid(){
+     var lid = d3.select("#lid")
+    lid.transition()
+    .attr("transform", "rotate(0)")
+    .attr("x", 180).attr("y", 185)
+    
+}
 
 
 function createCard(d) {
