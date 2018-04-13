@@ -1,6 +1,5 @@
 // Add images to foreground and background
-
-var vizSVG = d3.select(".rightSide")
+var vizSVG = d3.select("#animate")
       .append("svg")
       .attr("class", "vizSVG")
       .attr("width", "100%")
@@ -20,8 +19,9 @@ vizSVG.append("image")
     .attr("x", 180)
     .attr("y", 185)
     .attr("width", 450)
-    .style("z-index", 2)
+    .style("z-index", 10)
 
+// Functions to trigger animation
 function openLid(){
     var lid = d3.select("#lid")
     lid.transition()
@@ -34,8 +34,19 @@ function closeLid(){
     lid.transition()
     .attr("transform", "rotate(0)")
     .attr("x", 180).attr("y", 185)
+}
+
+
+// Geneate restaurant
+
+
+function generate(){
+    closeLid()
+    // Do something
+    setTimeout(openLid, 500)
     
 }
+
 
 
 function createCard(d) {
@@ -96,5 +107,5 @@ function createCard(d) {
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
     // modified this getElement, #scroll didnt seem to exist
-    document.getElementById("right-mount").appendChild(card)
+    document.getElementById("results").appendChild(card)
 }
