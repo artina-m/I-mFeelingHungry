@@ -22,16 +22,16 @@
     <div class="leftSide">
         <!-- Title, Description, Filters -->
         <div class = "filterDiv">
-            <p class="mainTitle">I'm <br> feeling... <br>
-            <input type = "text" placeholder = "Italian"/></p>
-            <p>Filter 1</p>
-            <p>Filter 2</p>
-            <p>Filter 3</p>
+            <p class="mainTitle">I'm feeling... <br>
+            <input id = "mySearch" type = "search" placeholder = "Italian" autofocus/></p>
+            <p>Price Range Filter</p>
+            <p>Location Filter</p>
+            <p>Review Count Filter</p>
             <button class = "button" onclick = "somefunction()">Find me a restaurant!</button>
         </div>
         
         <div>
-            <p class="subTitle">Intructions</p>
+            <p class="subTitle">Looking for a place to eat in Boston?</p>
             <p class="suppText">Lorem ipsum dolor sit amet, in vix commodo gubergren consetetur, cu duo quod insolens mnesarchum, pro dicit mentitum in. Vix iisque conclusionemque ut, eu eos omittantur consectetuer, sea ei placerat perpetua instructior.</p>
         </div>
 
@@ -47,6 +47,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="http://d3js.org/topojson.v2.min.js"></script>
     <script src="index.js"></script>
+    <script src="plot.js"></script>
 
 </body>
 
