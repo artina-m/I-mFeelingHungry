@@ -108,7 +108,6 @@ function cleanse_row(row) {
 // filters based on 'categories', 'dollar_sign', 'neighborhood'. Arguements from the front end should be passed into this, returns array of restaurant objects
 
 function filter_search(data, category_filter, price_filter, neighborhood_filter, ) {
-
     // assuming we're using fields: 'categories', 'dollar_sign', neighborhood' for the search
 
     var filtered = data.filter(function (row) {
@@ -130,9 +129,40 @@ function randomRestaurant(restaurant_arr){
     return restaurant_arr[(Math.floor(Math.random() * restaurant_arr.length))]; 
 }
 
+
+
+function combine(multiarr) {
+    return multiarr.map((arr) => arr.map((y) => y[0]));
+};
+
+function uniqueCategories(data){
+
+    // this is a 2d array of all categories
+    var allCategories= data.reduce(function (keeper, entry) {
+        return keeper.concat(combine(entry.categories));
+    }, []);
+
+    // determine unique categories, return as Set of categories
+    let set = new Set([].concat.apply([], allCategories));
+
+    
+    
+    return Array.from(set);
+}
+
+// not making this dynamic for time saving purpose
+$("#mySearch").autocomplete({
+    source: ["Breakfast & Brunch", "Burgers", "Sandwiches", "Mexican", "Japanese", "Italian", "Pizza", "Seafood", "Live/Raw Food", "American (New)", "Mediterranean", "Vegan", "Gluten-Free", "Spanish", "Wine Bars", "Tapas/Small Plates", "Salad", "Juice Bars & Smoothies", "Vegetarian", "Indian", "Belgian", "American (Traditional)", "Pubs", "Korean", "Asian Fusion", "Lounges", "Coffee & Tea", "Cafes", "Delis", "Grocery", "Bakeries", "Gastropubs", "Bars", "Cocktail Bars", "Desserts", "French", "Steakhouses", "Cheese Shops", "Sushi Bars", "Bubble Tea", "Vietnamese", "Caterers", "Cheesesteaks", "Diners", "Turkish", "Falafel", "Pakistani", "Bangladeshi", "Himalayan/Nepalese", "Halal", "Fast Food", "Hot Pot", "Chinese", "Ramen", "Mongolian", "Dim Sum", "Cantonese", "Latin American", "Food Trucks", "Thai", "Ice Cream & Frozen Yogurt", "Donuts", "Food Stands", "Cupcakes", "Greek", "Ethnic Food", "Armenian", "Middle Eastern", "Polish", "Ukrainian", "Shopping"]
+});
+
 d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
     console.log("Cleaned data:");
     console.log(data)
+
+
+    // generate unique categories from the data
+    // let uniqueCats = uniqueCategories(data);
+   
 
     // tests for output on various filters....
     
@@ -143,7 +173,7 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
     // let filtered_results = filter_search(data, "italian", "$", "Financial District");
     
     // 3 results
-    let filtered_results = filter_search(data, "cafes", "$", "Financial District");
+    // let filtered_results = filter_search(data, "cafes", "$", "Financial District");
     
     // 7 results, but also img error
     // let filtered_results = filter_search(data, "indpak", "$$", "Allston/Brighton");
@@ -152,17 +182,17 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
     // let filtered_results = filter_search(data, "pizza", "$$", "East Boston");
     
     // 6 results
-    // let filtered_results = filter_search(data, "mexican", "$", "East Boston");
+    let filtered_results = filter_search(data, "mexican", "$", "East Boston");
 
     console.log("filtered_results of a test filter:");
     console.log(filtered_results);
-    console.log("random restaurant from this filtered array:");
-    console.log(randomRestaurant(filtered_results));
+    // console.log("random restaurant from this filtered array:");
+    // console.log(randomRestaurant(filtered_results));
 
 
-    // render a card 
-    filtered_results.forEach(element => {
-        createCard(element);
-    });
+    // // render a card 
+    // filtered_results.forEach(element => {
+    //     createCard(element);
+    // });
 
 });

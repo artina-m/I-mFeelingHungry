@@ -28,6 +28,10 @@ p,a, button, input {
     height: 350px; 
 }
 
+.ui-fix{
+    margin-left: 0 !important;
+}
+
 .mainTitle {
     font-size: 28px;
     font-weight: 400;
