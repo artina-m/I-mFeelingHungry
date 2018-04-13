@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,500');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,200,400,500');
+
+@import url('https://fonts.googleapis.com/css?family=Lato|Playfair+Display+SC');
 
 
 body{
@@ -7,7 +9,7 @@ body{
 }
 
 
-p,a {
+p,a, button, input {
     font-family: Roboto;
 }
 
@@ -28,8 +30,27 @@ p,a {
 }
 
 .mainTitle {
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: 400;
     margin-top: 150px;
+    color: #212F3D ;
+}
+
+input{
+    border: none;
+    border-bottom: 1px lightgrey solid;
+    font-size: 26px;
+    margin-top: 10px;
+    color:#3498DB
+}
+
+input::placeholder {
+  color: lightgrey;
+  font-weight: 100;
+}
+
+input:focus{
+  outline: none;
 }
 
 .subTitle {
@@ -39,6 +60,18 @@ p,a {
 
 .suppText {
     font-size: 12px;
+}
+
+.button {
+    background-color: #3498DB; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 
