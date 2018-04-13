@@ -27,9 +27,7 @@
             <p>Price Range Filter</p>
             <p>Location Filter</p>
             <p>Review Count Filter</p>
-            <button class = "button" onclick = "somefunction()">Find me a restaurant!</button>
-            <button onclick = "openLid()">Open!</button>
-            <button onclick = "closeLid()">Close!</button>
+            <button class = "button" onclick = "generate()">Find me a restaurant!</button>
         </div>
         
         <div>
@@ -42,7 +40,11 @@
 
     <div id ="right-mount" class="rightSide">
         <!-- Visualization -->
-        <!-- Populated by index.js-->
+        <!-- Populated by index.js and plot.js -->
+        <div id = "animate"></div>
+        <div id = "results">
+            <!-- Add cards -->
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
