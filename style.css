@@ -14,15 +14,13 @@ p,a, button, input {
 }
 
 .leftSide {
+    margin-left: 50px;
     height: 100%;
     width: 400px;
     float: left;
 }
 
-/* .leftSide div{
-    margin-left: 100px;
-} */
-
+s
 .filterDiv{ 
     margin-top: 50px;
     /* height: 350px;  */
@@ -36,27 +34,31 @@ p,a, button, input {
     font-size: 28px;
     font-weight: 400;
     margin-top: 150px;
-    font-weight:100;
+    margin-bottom: 10px;
+    font-weight:400;
     color: #515151 ;
 }
 
 input{
     border: none;
     border-bottom: 1px lightgrey solid;
-    font-size: 26px;
-    margin-top: 10px;
     color:#3498DB;
+    margin-bottom: 50px;
 }
 
 input::placeholder {
   color: lightgrey;
-  font-weight: 400;
+  font-weight: 100;
 }
 
 input:focus{
   outline: none;
 }
 
+#mySearch {
+    font-size: 26px;
+
+}
 .subTitle {
     font-size: 12px;
     font-weight: 600;
@@ -92,22 +94,27 @@ input:focus{
 
  /* Card Style */
 
-/*
-#results {
-    display: inline-block;
-}
-*/
+
 #animate{
     display: inline;;
 }
 
+#results {
+    width: 600px;
+    height: 250px;
+    overflow: auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+}
 .card {
-    width: 99%;
-    height: 100px;
-    overflow: hidden;
+    margin-left: 5px;
+    display: inline-block !important;
+    width: 140px;
+    height: 100%;
     background-color: none;
-    margin-bottom: 10px;
+    overflow: hidden;
     z-index: 2;
+    align-content: center;
 }
 
 .card:hover{
@@ -115,25 +122,28 @@ input:focus{
 }
 
 .photo {
-    height:100%;
+    height:50;
+    border-radius: 500;
 }
 
 #rest_photo{
-    width: 100px;
-    height:100%;
-    margin-left: 5px;
-    float:left;
+    width: 100%;
+    height:150px;
     overflow: hidden;
-    border-radius: 100px;
-    border-color: #bababa
+    border-radius: 500;
+    border-color: #bababa;
+    display:inline !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
 #rest_info{
-    width:60%;
+    width:100 !important;
     height: 100%;
     float:left;
     margin-top: 10px;
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 

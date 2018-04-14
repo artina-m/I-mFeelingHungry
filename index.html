@@ -15,9 +15,48 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="slick/slick.css">
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
+  <style type="text/css">
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    .slider {
+        width: 50%;
+        margin: 100px auto;
+    }
+    .slick-slide {
+      margin: 0px 20px;
+    }
+    .slick-slide img {
+      width: 100%;
+    }
+    .slick-prev:before,
+    .slick-next:before {
+      color: black;
+    }
+    .slick-slide {
+      transition: all ease-in-out .3s;
+      opacity: .2;
+    }
+    
+    .slick-active {
+      opacity: .5;
+    }
+    .slick-current {
+      opacity: 1;
+    }
+  </style>
 </head>
 
 <body>
+
+
+
 
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
@@ -99,8 +138,8 @@
         <!-- Visualization -->
         <!-- Populated by index.js and plot.js -->
         <div id = "animate"></div>
-        <div class= "slider slider-for"></div>
-        <div class = "slider slider-nav"></div>
+        <div id = "results"></div>
+
         
             <!-- Add cards -->
         </div>

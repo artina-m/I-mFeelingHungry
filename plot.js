@@ -40,11 +40,10 @@ function closeLid(){
 // Geneate restaurant
 
 
-function generate(){
+function triggerLid(){
     closeLid()
     // Do something
     setTimeout(openLid, 500)
-    
 }
 
 
@@ -53,10 +52,9 @@ function createCard(d) {
     // This function takes a row from a dataset
     // Creates one card
     // id = resturant name 
-
-     var divWrapper = document.createElement("div");
+    
     var card = document.createElement("div");
-    card.className = "slider slide-for";
+    card.className = "card";
     card.id = d.name;
 
     // Photo
@@ -107,8 +105,7 @@ function createCard(d) {
     // Create card
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
-    divWrapper.appendChild(card)
-    // modified this getElement, #scroll didnt seem to exist
-    document.getElementsByClassName("what")[0].appendChild(divWrapper)
-    document.getElementsByClassName("what1")[0].appendChild(divWrapper)
+    
+    document.getElementById("results").appendChild(card)
+    
 }
