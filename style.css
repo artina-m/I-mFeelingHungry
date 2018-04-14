@@ -102,7 +102,7 @@ input:focus{
 }
 
 .card {
-    width: 200px;
+    width: 99%;
     height: 100px;
     overflow: hidden;
     background-color: none;
