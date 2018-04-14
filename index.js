@@ -184,8 +184,7 @@ function objectifyForm(formArray) {
 // pick a random restaurant from the CSV 
 function generate_random() {
     let random = randomRestaurant(data);
-    return random;
-};
+    return random;};
 
 d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     data = d;
@@ -202,18 +201,21 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
         console.log("results going into card generation from USER SELECTION");
         console.log(filtered_results);
         //remove current cards and generate new ones here....
+        filtered_results.forEach(element => {
+         createCard(element);
+      });
     });
 
     // handle random generation
     $("#random_generator").click(function (){
         filtered_results = generate_random();
+        triggerLid()
         
         console.log("results going into card generation from RANDOM");
         console.log(filtered_results);
         //remove current cards and generate new ones here....
+
     });
-
-
 
 
     // generate unique categories from the data
@@ -246,9 +248,9 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     // console.log("random restaurant from this filtered array:");
     // console.log(randomRestaurant(filtered_results));
 
-    // // render a card 
-    // filtered_results.forEach(element => {
-    //     createCard(element);
-    // });
+//     // render a card 
+//     filtered_results.forEach(element => {
+//         createCard(element);
+//     });
 
 });
