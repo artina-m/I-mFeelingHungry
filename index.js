@@ -214,6 +214,8 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     });
 
 
+    
+
 
 
     // generate unique categories from the data
