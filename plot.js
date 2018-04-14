@@ -54,8 +54,9 @@ function createCard(d) {
     // Creates one card
     // id = resturant name 
 
+     var divWrapper = document.createElement("div");
     var card = document.createElement("div");
-    card.className = "card";
+    card.className = "slider slide-for";
     card.id = d.name;
 
     // Photo
@@ -106,6 +107,8 @@ function createCard(d) {
     // Create card
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
+    divWrapper.appendChild(card)
     // modified this getElement, #scroll didnt seem to exist
-    document.getElementById("results").appendChild(card)
+    document.getElementsByClassName("what")[0].appendChild(divWrapper)
+    document.getElementsByClassName("what1")[0].appendChild(divWrapper)
 }
