@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -22,23 +23,67 @@
     <![endif]-->
     <div class="leftSide">
         <!-- Title, Description, Filters -->
+        <form class="form">
+
         <div class = "filterDiv">
             <p class="mainTitle">I'm feeling... <br>
             
                 <!-- <input id = "mySearch" type = "search" placeholder = "Italian" autofocus/></p> -->
-
-                <div class="ui-widget ui-fix">
-                    <input id="mySearch" placeholder = "Burgers" autofocus>
+                <div class="ui-widget">
+                    <input id="mySearch" placeholder="Italian" name="category_filter"  value="Italian"autofocus>
                 </div>
-
             </p>
 
+            <div class="switch-field">
+                <div class="switch-title"><p>Price Range Filter</p></div>
+                
+                <input type="radio" id="switch_3_left" name="price_filter" value="$" checked/>
+                <label for="switch_3_left">$</label>
 
-            <p>Price Range Filter</p>
-            <p>Location Filter</p>
-            <p>Review Count Filter</p>
-            <button class = "button" onclick = "generate()">Find me a restaurant!</button>
+                <input type="radio" id="switch_3_center" name="price_filter" value="$$" />
+                <label for="switch_3_center">$$</label>
+
+                <input type="radio" id="switch_3_right" name="price_filter" value="$$$" />
+                <label for="switch_3_right">$$$</label>
+
+                <input type="radio" id="switch_4_right" name="price_filter" value="$$$$" />
+                <label for="switch_4_right">$$$$</label>
+            </div>
+
+            <select name="neighborhood_filter">
+                <option value="ANY"> Any </option>
+                <option value="Financial District"> Financial District </option>
+                <option value="North End"> North End </option>
+                <option value="Waterfront"> Waterfront </option>
+                <option value="East Boston"> East Boston </option>
+                <option value="Downtown"> Downtown </option>
+                <option value="South End"> South End </option>
+                <option value="Beacon Hill"> Beacon Hill </option>
+                <option value="Back Bay"> Back Bay </option>
+                <option value="South Boston"> South Boston </option>
+                <option value="Chinatown"> Chinatown </option>
+                <option value="Allston/Brighton"> Allston/Brighton </option>
+                <option value="Charlestown"> Charlestown </option>
+                <option value="Kendall Square/MIT"> Kendall Square/MIT </option>
+                <option value="Dorchester"> Dorchester </option>
+                <option value="Teele Square"> Teele Square </option>
+                <option value="Jamaic Plain"> Jamaic Plain </option>
+                <option value="Inman Square"> Inman Square </option>
+                <option value="Harvard Square"> Harvard Square </option>
+                <option value="Fenway"> Fenway </option>
+                <option value="Mission Hill"> Mission Hill </option>
+                <option value="Porter Square"> Porter Square </option>
+                <option value="North Cambridge"> North Cambridge </option>
+                <option value="West Roxbury"> West Roxbury </option>
+                <option value="Coolidge Corner"> Coolidge Corne </option>
+
+            </select>
+
+            <input type="submit" name="submit"></input> 
+        </form>
         </div>
+        <button id="random_generator" class ="button">Find me a restaurant!</button>
+        
         
         <div>
             <p class="subTitle">Looking for a place to eat in Boston?</p>

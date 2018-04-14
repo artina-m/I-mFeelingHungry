@@ -1,4 +1,5 @@
-
+// will hold csv data
+var data;
 function createCard(d) {
     // This function takes a row from a dataset
     // Creates one card
@@ -105,19 +106,28 @@ function cleanse_row(row) {
     };
 };
 
-// filters based on 'categories', 'dollar_sign', 'neighborhood'. Arguements from the front end should be passed into this, returns array of restaurant objects
-
+// filters based on 'categories', 'dollar_sign', 'neighborhood'. 
+// returns array of matched restaurant objects
 function filter_search(data, category_filter, price_filter, neighborhood_filter, ) {
-    // assuming we're using fields: 'categories', 'dollar_sign', neighborhood' for the search
+
+    // console.log(category_filter, price_filter, neighborhood_filter);
 
     var filtered = data.filter(function (row) {
-        // works via an 'and' search
-        if (
-            isInArray(row.categories, category_filter) &&
-            row.dollar_sign == price_filter &&
-            (row.neighborhood == neighborhood_filter || row.neighborhood == "NULL") )
-        { return row };
-
+        
+        // for 'Any' search on neighborhood
+        if (neighborhood_filter == "ANY") {
+            if (
+                isInArray(row.categories, category_filter) &&
+                row.dollar_sign == price_filter) { return row };
+        }
+        // for search with 3 inputted catgeories
+        else{
+            // works via an 'and' search
+            if (
+                isInArray(row.categories, category_filter) &&
+                row.dollar_sign == price_filter &&
+                (row.neighborhood == neighborhood_filter || row.neighborhood == "NULL")) { return row };
+        }
     });
     // drop dups in the data
     return removeDuplicates(filtered, "name");
@@ -130,38 +140,85 @@ function randomRestaurant(restaurant_arr){
 }
 
 
+// used in dynamic generation of catgeories
 
-function combine(multiarr) {
-    return multiarr.map((arr) => arr.map((y) => y[0]));
-};
+// function combine(multiarr) {
+//     return multiarr.map((arr) => arr.map((y) => y[1]));
+// };
 
-function uniqueCategories(data){
+// function uniqueCategories(data){
 
-    // this is a 2d array of all categories
-    var allCategories= data.reduce(function (keeper, entry) {
-        return keeper.concat(combine(entry.categories));
-    }, []);
+//     // this is a 2d array of all categories
+//     var allCategories= data.reduce(function (keeper, entry) {
+//         return keeper.concat(combine(entry.categories));
+//     }, []);
 
-    // determine unique categories, return as Set of categories
-    let set = new Set([].concat.apply([], allCategories));
+//     // determine unique categories, return as Set of categories
+//     let set = new Set([].concat.apply([], allCategories));
 
-    
-    
-    return Array.from(set);
-}
+//     return Array.from(set);
+// }
 
-// not making this dynamic for time saving purpose
+// these can be dynanmically generated, but this method saves computation time
+
+const prices = ["$", "$$", "$$$", "$$$$"];
+
+const categories = { "Breakfast & Brunch": "breakfast_brunch", "Burgers": "burgers", "Sandwiches": "sandwiches", "Mexican": "mexican", "Japanese": "japanese", "Italian": "italian", "Pizza": "pizza", "Seafood": "seafood", "Live/Raw Food": "raw_food", "American (New)": "newamerican", "Mediterranean": "mediterranean", "Vegan": "vegan", "Gluten-Free": "gluten_free", "Spanish": "spanish", "Wine Bars": "wine_bars", "Tapas/Small Plates": "tapasmallplates", "Salad": "salad", "Juice Bars & Smoothies": "juicebars", "Vegetarian": "vegetarian", "Indian": "indpak", "Belgian": "belgian", "American (Traditional)": "tradamerican", "Pubs": "pubs", "Korean": "korean", "Asian Fusion": "asianfusion", "Lounges": "lounges", "Coffee & Tea": "coffee", "Cafes": "cafes", "Delis": "delis", "Grocery": "grocery", "Bakeries": "bakeries", "Gastropubs": "gastropubs", "Bars": "bars", "Cocktail Bars": "cocktailbars", "Desserts": "desserts", "French": "french", "Steakhouses": "steak", "Cheese Shops": "cheese", "Sushi Bars": "sushi", "Bubble Tea": "bubbletea", "Vietnamese": "vietnamese", "Caterers": "catering", "Cheesesteaks": "cheesesteaks", "Diners": "diners", "Turkish": "turkish", "Falafel": "falafel", "Pakistani": "pakistani", "Bangladeshi": "bangladeshi", "Himalayan/Nepalese": "himalayan", "Halal": "halal", "Fast Food": "hotdogs", "Hot Pot": "hotpot", "Chinese": "chinese", "Ramen": "ramen", "Mongolian": "mongolian", "Dim Sum": "dimsum", "Cantonese": "cantonese", "Latin American": "latin", "Food Trucks": "foodtrucks", "Thai": "thai", "Ice Cream & Frozen Yogurt": "icecream", "Donuts": "donuts", "Food Stands": "foodstands", "Cupcakes": "cupcakes", "Greek": "greek", "Ethnic Food": "ethnicmarkets", "Armenian": "armenian", "Middle Eastern": "mideastern", "Polish": "polish", "Ukrainian": "ukrainian", "Shopping": "shopping" };
+
+const neighborhoods = ["Financial District", "North End", "Waterfront", "East Boston", "Downtown", "South End", "NULL", "Beacon Hill", "Back Bay", "South Boston", "Chinatown", "Allston/Brighton", "Charlestown", "Kendall Square/MIT", "Dorchester", "Teele Square", "Jamaica Plain", "Inman Square", "Harvard Square", "Fenway", "Mission Hill", "Porter Square", "North Cambridge", "West Roxbury", "Coolidge Corner"];
+
+
 $("#mySearch").autocomplete({
-    source: ["Breakfast & Brunch", "Burgers", "Sandwiches", "Mexican", "Japanese", "Italian", "Pizza", "Seafood", "Live/Raw Food", "American (New)", "Mediterranean", "Vegan", "Gluten-Free", "Spanish", "Wine Bars", "Tapas/Small Plates", "Salad", "Juice Bars & Smoothies", "Vegetarian", "Indian", "Belgian", "American (Traditional)", "Pubs", "Korean", "Asian Fusion", "Lounges", "Coffee & Tea", "Cafes", "Delis", "Grocery", "Bakeries", "Gastropubs", "Bars", "Cocktail Bars", "Desserts", "French", "Steakhouses", "Cheese Shops", "Sushi Bars", "Bubble Tea", "Vietnamese", "Caterers", "Cheesesteaks", "Diners", "Turkish", "Falafel", "Pakistani", "Bangladeshi", "Himalayan/Nepalese", "Halal", "Fast Food", "Hot Pot", "Chinese", "Ramen", "Mongolian", "Dim Sum", "Cantonese", "Latin American", "Food Trucks", "Thai", "Ice Cream & Frozen Yogurt", "Donuts", "Food Stands", "Cupcakes", "Greek", "Ethnic Food", "Armenian", "Middle Eastern", "Polish", "Ukrainian", "Shopping"]
+    source: Object.keys(categories)
 });
 
-d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
+// make the serializeArray into a nicer object
+function objectifyForm(formArray) {
+    var returnArray = {};
+    for (var i = 0; i < formArray.length; i++) {
+        returnArray[formArray[i]['name']] = formArray[i]['value'];
+    }
+    return returnArray;
+};
+
+// pick a random restaurant from the CSV 
+function generate_random() {
+    let random = randomRestaurant(data);
+    return random;
+};
+
+d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
+    data = d;
+    var filtered_results;
     console.log("Cleaned data:");
     console.log(data)
+
+    // grab inputs from frontend form
+    $("form").on("submit", function (event) {
+        event.preventDefault();
+        var input_searches = objectifyForm($(this).serializeArray());
+
+        filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
+        console.log("results going into card generation from USER SELECTION");
+        console.log(filtered_results);
+        //remove current cards and generate new ones here....
+    });
+
+    // handle random generation
+    $("#random_generator").click(function (){
+        filtered_results = generate_random();
+        
+        console.log("results going into card generation from RANDOM");
+        console.log(filtered_results);
+        //remove current cards and generate new ones here....
+    });
+
+
 
 
     // generate unique categories from the data
     // let uniqueCats = uniqueCategories(data);
+    // console.log(uniqueCats);
    
 
     // tests for output on various filters....
@@ -182,13 +239,12 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
     // let filtered_results = filter_search(data, "pizza", "$$", "East Boston");
     
     // 6 results
-    let filtered_results = filter_search(data, "mexican", "$", "East Boston");
+    // let filtered_results = filter_search(data, "mexican", "$", "East Boston");
 
-    console.log("filtered_results of a test filter:");
-    console.log(filtered_results);
+    // console.log("filtered_results of a test filter:");
+    // console.log(filtered_results);
     // console.log("random restaurant from this filtered array:");
     // console.log(randomRestaurant(filtered_results));
-
 
     // // render a card 
     // filtered_results.forEach(element => {
