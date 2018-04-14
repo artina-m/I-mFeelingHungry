@@ -190,9 +190,9 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (data) {
     // console.log(randomRestaurant(filtered_results));
 
 
-    // // render a card 
-    // filtered_results.forEach(element => {
-    //     createCard(element);
-    // });
+     // render a card 
+     filtered_results.forEach(element => {
+         createCard(element);
+     });
 
 });

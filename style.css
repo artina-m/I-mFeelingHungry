@@ -92,15 +92,17 @@ input:focus{
 
  /* Card Style */
 
+/*
 #results {
     display: inline-block;
 }
+*/
 #animate{
     display: inline;;
 }
 
 .card {
-    width: 99%;
+    width: 200px;
     height: 100px;
     overflow: hidden;
     background-color: none;

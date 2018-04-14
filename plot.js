@@ -107,5 +107,6 @@ function createCard(d) {
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
     // modified this getElement, #scroll didnt seem to exist
-    document.getElementById("results").appendChild(card)
+    document.getElementsByClassName("slider-for")[0].appendChild(card)
+    document.getElementsByClassName("slider-nav")[0].appendChild(card)
 }
