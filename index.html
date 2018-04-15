@@ -76,7 +76,7 @@
             </p>
 
             <div class="switch-field">
-                <div class="switch-title"><p>Price Range Filter</p></div>
+                <div class="switch-title"><p>Price Range</p></div>
                 
                 <input type="radio" id="switch_3_left" name="price_filter" value="$" checked/>
                 <label for="switch_3_left">$</label>
@@ -90,7 +90,7 @@
                 <input type="radio" id="switch_4_right" name="price_filter" value="$$$$" />
                 <label for="switch_4_right">$$$$</label>
             </div>
-
+            <p>Location</p>
             <select name="neighborhood_filter">
                 <option value="ANY"> Any </option>
                 <option value="Financial District"> Financial District </option>
@@ -138,7 +138,9 @@
         <!-- Visualization -->
         <!-- Populated by index.js and plot.js -->
         <div id = "animate"></div>
+        <div style = "text-align:center;">
         <div id = "results"></div>
+        </div>
 
         
             <!-- Add cards -->

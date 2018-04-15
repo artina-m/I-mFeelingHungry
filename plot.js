@@ -3,21 +3,25 @@ var vizSVG = d3.select("#animate")
       .append("svg")
       .attr("class", "vizSVG")
       .attr("width", "100%")
-      .attr("height", "100%")
+      .attr("height", "500px")
 
 vizSVG.append("image")
     .attr("xlink:href","plate.png")
     .attr("x", 150)
-    .attr("y", 350)
+    .attr("y", 300)
     .attr("width", 500)
     .style("z-index", 1)
 
+//vizSVG.append("line")
+//    .attr("x1", 250).attr("x2", 500)
+//    .attr("y1", 400).attr("y2", 400)
+//    .attr("stroke", "lightgrey")
 vizSVG.append("image")
     .attr("xlink:href","lid.png")
     .attr("class", "lid")
     .attr("id", "lid")
     .attr("x", 180)
-    .attr("y", 185)
+    .attr("y", 135)
     .attr("width", 450)
     .style("z-index", 10)
 
@@ -33,7 +37,7 @@ function closeLid(){
      var lid = d3.select("#lid")
     lid.transition()
     .attr("transform", "rotate(0)")
-    .attr("x", 180).attr("y", 185)
+    .attr("x", 180).attr("y", 135)
 }
 
 
