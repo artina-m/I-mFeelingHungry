@@ -194,6 +194,8 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
 
     // grab inputs from frontend form
     $("form").on("submit", function (event) {
+        triggerLid()
+        $('#results').empty();
         event.preventDefault();
         var input_searches = objectifyForm($(this).serializeArray());
 
@@ -210,6 +212,7 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     $("#random_generator").click(function (){
         filtered_results = generate_random();
         triggerLid()
+         $('#results').empty();
         
         console.log("results going into card generation from RANDOM");
         console.log(filtered_results);
