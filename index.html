@@ -76,7 +76,6 @@
             </p>
 
             <div class="switch-field">
-                <div class="switch-title"><p>Price Range</p></div>
                 
                 <input type="radio" id="switch_3_left" name="price_filter" value="$" checked/>
                 <label for="switch_3_left">$</label>
@@ -90,9 +89,8 @@
                 <input type="radio" id="switch_4_right" name="price_filter" value="$$$$" />
                 <label for="switch_4_right">$$$$</label>
             </div>
-            <p>Location</p>
-            <select name="neighborhood_filter">
-                <option value="ANY"> Any </option>
+            <select id = "neighborhood_filter" name="neighborhood_filter">
+                <option value="ANY">All Locations </option>
                 <option value="Financial District"> Financial District </option>
                 <option value="North End"> North End </option>
                 <option value="Waterfront"> Waterfront </option>
@@ -119,12 +117,11 @@
                 <option value="Coolidge Corner"> Coolidge Corne </option>
 
             </select>
+            <br>
 
-            <input type="submit" name="submit"></input> 
+            <input type="submit" name="submit" value = "Find me a resturant!" class = "submitButton"></input> 
         </form>
         </div>
-        <button id="random_generator" class ="button">I'm feeling lucky</button>
-        
         
         <div>
             <p class="subTitle">Looking for a place to eat in Boston?</p>
@@ -137,11 +134,14 @@
     <div id ="right-mount" class="rightSide">
         <!-- Visualization -->
         <!-- Populated by index.js and plot.js -->
-        <div id = "animate"></div>
+        
+        <div id = "animate">
+            <button id="random_generator" class ="button">I'm feeling lucky</button>
+        </div>
+        
         <div style = "text-align:center;">
         <div id = "results"></div>
         </div>
-
         
             <!-- Add cards -->
         </div>

@@ -14,16 +14,15 @@ p,a, button, input {
 }
 
 .leftSide {
-    margin-left: 50px;
+    margin-left: 60px;
     height: 100%;
-    width: 400px;
+    width: 300px;
     float: left;
 }
 
-s
 .filterDiv{ 
     margin-top: 50px;
-    /* height: 350px;  */
+    height: 350px;  
 }
 
 .ui-fix{
@@ -60,6 +59,7 @@ input:focus{
 
 }
 .subTitle {
+    margin-top: 30px;
     font-size: 12px;
     font-weight: 600;
 }
@@ -69,24 +69,37 @@ input:focus{
 }
 
 .button {
-    background-color: #3498DB; 
+    background-color: #efefef; 
     border: none;
-    color: white;
-    padding: 15px 25px;
+    color: dimgray;
+    padding: 10px 25px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
-    border-radius: 20px;
+    border-radius: 15px;
+    z-index: 1;
+    float: right;
+    margin-top: 50px;
+    margin-left:800px;
+    position: absolute;
 }
+
+.button:hover{
+    background-color: #3498DB; 
+    border: none;
+    color: white;
+    
+}
+
 
 
 .rightSide {
     height: 100%;
-    width: 800px;
+    width: 950px;
     float: right;
-    margin-left: 50px;
+    margin-left: 20px;
     display: inline-block;
     position: absolute;
 }
@@ -100,96 +113,99 @@ input:focus{
 }
 
 #results {
-    width: 600px;
-    height: 250px;
+    width: 600px;;
+    height: 220px;
     overflow: auto;
     white-space: nowrap;
     overflow-y: hidden;
-    margin: 0 auto;
+    margin-left: 110px;
+    background-color: #efefef;
 }
+
+
 .card {
-    margin-left: 5px;
     display: inline-block !important;
     width: 140px;
-    height: 100%;
+    height: 97%;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-bottom: 10px;
     background-color: none;
     overflow: hidden;
     z-index: 2;
     align-content: center;
+    border: none ;
 }
 
 .card:hover{
     cursor: pointer;
+    border: 2px solid dimgrey;
 }
+
+.card div{
+    overflow: hidden;
+    white-space: normal;
+}
+
 
 .photo {
     height:50;
-    border-radius: 500;
 }
 
-#rest_photo{
-    width: 100%;
-    height:150px;
-    overflow: hidden;
-    border-radius: 500;
-    border-color: #bababa;
-    display:inline !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-}
 
 #rest_info{
     width:100 !important;
+    overflow: hidden !important;
     height: 100%;
-    float:left;
     margin-top: 10px;
     margin-left: 10px;
     margin-right: 10px;
 }
 
-
-#rest_stars,#rest_dollars, #rest_url {
-    display:inline;
+#rest_photo img{
+    width:80%;
+    margin-top: 10px;
+    border-radius: 150px;
 }
 
 #rest_name{
-    font-size: 16px;
+    color: black;
+    font-size: 12px;
     font-weight: 600;
     margin-bottom: 5px;
     margin-top: 0px;
+    overflow: hidden !important;
+    text-decoration: none;
+
 }
 
 #rest_cat {
+    color: black;
     margin-top:5px;
-    font-size: 14px;
-}
+    font-size: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
 
-#rest_stars{
-    color:grey;
-    font-size: 14px;
-}
-
-#rest_dollars {
-    color:green;
-    font-size: 14px;
 }
 
 #rest_website {
     color: grey;
-    text-decoration: none;
-    font-size: 14px;
+    font-size: 10px;
 }
 
 
 
 .switch-field {
   font-family: "Lucida Grande", Tahoma, Verdana, sans-serif;
-  padding: 40px;
-    overflow: hidden;
+  overflow: hidden;
+    margin-top: 50px;
 }
 
 .switch-title {
-  margin-bottom: 6px;
+    margin-top: 30px;
+    margin-bottom: 6px;
+    color:#515151;
+    font-size:14px;
 }
 
 .switch-field input {
@@ -230,7 +246,8 @@ input:focus{
 }
 
 .switch-field input:checked + label {
-  background-color: #A5DC86;
+  background-color: #3498DB;
+    color: white;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -242,3 +259,25 @@ input:focus{
 .switch-field label:last-of-type {
   border-radius: 0 4px 4px 0;
 }
+
+.submitButton {
+    margin-top: 20px;
+    background-color: #3498DB;
+    color: white;
+    border-radius: 10px;
+    height: 45px;
+    width: 245px;
+    font-size: 12px;
+}
+
+.submitButton:hover {
+    cursor: pointer;
+    background-color: #2a7fb7
+    
+}
+
+#neighborhood_filter{
+    margin-top: 20px;
+    width: 245px;
+}
+
