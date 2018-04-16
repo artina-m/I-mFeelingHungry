@@ -184,13 +184,20 @@ function objectifyForm(formArray) {
 // pick a random restaurant from the CSV 
 function generate_random() {
     let random = randomRestaurant(data);
-    return random;};
+    return random;
+};
+
+function remove(array, element) {
+    const index = array.indexOf(element);
+    var item =  array.splice(index, 1);
+    return item;
+}
 
 d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     data = d;
     var filtered_results;
-    console.log("Cleaned data:");
-    console.log(data)
+    // console.log("Cleaned data:");
+    // console.log(data)
 
     // grab inputs from frontend form
     $("form").on("submit", function (event) {
@@ -201,7 +208,10 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
 
         filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
         console.log("results going into card generation from USER SELECTION");
-        console.log(filtered_results);
+        console.log(filtered_results)
+
+        // this will remove and return an item, and mutate filtered_results
+        var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
         //remove current cards and generate new ones here....
         filtered_results.forEach(element => {
          createCard(element);
