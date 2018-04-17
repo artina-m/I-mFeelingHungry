@@ -1,17 +1,21 @@
 // will hold csv data
 var data;
-function createCard(d) {
-    // This function takes a row from a dataset
-    // Creates one card
-    // id = resturant name 
+function createSelectedCard(d) {
+    console.log("entering createSelectedCard");
+    console.log(d);
+    // Input: Array of resturant info
+    var linkedCard = document.createElement("a")
+    linkedCard.href = d.url;
+    linkedCard.target = "_blank"
+    linkedCard.className = "linkedCard"
 
     var card = document.createElement("div");
-    card.className = "card";
+    card.className = "selectedCard";
     card.id = d.name;
 
     // Photo
     var restPhoto = document.createElement("div")
-    restPhoto.id = "rest_photo";
+    restPhoto.id = "r_photo";
 
     var photo = document.createElement("img")
     photo.className = "photo"
@@ -20,45 +24,53 @@ function createCard(d) {
 
     // Details
     var restInfo = document.createElement("div")
-    restInfo.id = "rest_info";
+    restInfo.id = "r_info";
 
     var para = document.createElement("p");
-    para.id = "rest_name"
+    para.id = "r_name"
     var rest_name = document.createTextNode(d.name);
     para.appendChild(rest_name);
     restInfo.appendChild(para);
 
+    // Get only first uppercase element of category types
+    var catArray = [];
+    d.categories.forEach(function (c) {
+        c.forEach(function (cat) {
+            catArray.push(" " + cat[0])
+        })
+    })
+
     var para = document.createElement("p");
-    para.id = "rest_cat"
-    var rest_cat = document.createTextNode(d.categories);
+    para.id = "r_cat"
+    var rest_cat = document.createTextNode(catArray);
     para.appendChild(rest_cat);
     restInfo.appendChild(para)
 
     var para = document.createElement("p");
-    para.id = "rest_stars"
-    var rest_stars = document.createTextNode("  " + d.rating + "   ");
+    para.id = "r_stars"
+    var rest_stars = document.createTextNode("Rating:  " + d.rating);
     para.appendChild(rest_stars);
     restInfo.appendChild(para)
 
     var para = document.createElement("p");
-    para.id = "rest_dollars"
-    var rest_dollars = document.createTextNode(d.dollar_sign);
+    para.id = "r_dollars"
+    var rest_dollars = document.createTextNode("Price Range:  " + d.dollar_sign);
     para.appendChild(rest_dollars);
     restInfo.appendChild(para)
 
-    var para = document.createElement("a");
-    para.id = "rest_website"
-    para.href = d.url
-    para.target = "_blank"
-    var rest_website = document.createTextNode("  |  Reviews");
-    para.appendChild(rest_website);
+    var para = document.createElement("p");
+    para.id = "r_count"
+    var rest_count = document.createTextNode("Review Count:  " + d.review_count);
+    para.appendChild(rest_count);
     restInfo.appendChild(para)
+
 
     // Create card
     card.appendChild(restPhoto)
     card.appendChild(restInfo)
-    // modified this getElement, #scroll didnt seem to exist
-    document.getElementById("right-mount").appendChild(card)
+    linkedCard.appendChild(card)
+    document.getElementById("underLid").appendChild(linkedCard)
+
 }
 
 // 2d array to flat array
@@ -72,6 +84,11 @@ function isInArray(arr, match_term) {
     let total_array = flatten(arr);
     return total_array.includes(match_term);
 
+}
+function remove(array, element) {
+    const index = array.indexOf(element);
+    var item = array.splice(index, 1);
+    return item;
 }
 
 // theres duplicate rows in the data. For some reason it's true but hard to tell the difference between the objects, this will just filter out by name of restaurant
@@ -108,24 +125,28 @@ function cleanse_row(row) {
 
 // filters based on 'categories', 'dollar_sign', 'neighborhood'. 
 // returns array of matched restaurant objects
-function filter_search(data, category_filter, price_filter, neighborhood_filter, ) {
+function filter_search(data, category_filter, price_filter_arr, neighborhood_filter, ) {
 
-    // console.log(category_filter, price_filter, neighborhood_filter);
+    // console.log(category_filter, price_filter_arr, neighborhood_filter);
 
     var filtered = data.filter(function (row) {
-        
+        // console.log(row.categories, category_filter);
+        // console.log(row.dollar_sign, price_filter_arr);
+        // console.log(row.neighborhood_filter, row.neighborhood);
+
         // for 'Any' search on neighborhood
         if (neighborhood_filter == "ANY") {
             if (
                 isInArray(row.categories, category_filter) &&
-                row.dollar_sign == price_filter) { return row };
+                price_filter_arr.includes(row.dollar_sign)
+            ) { return row };
         }
         // for search with 3 inputted catgeories
-        else{
+        else {
             // works via an 'and' search
             if (
                 isInArray(row.categories, category_filter) &&
-                row.dollar_sign == price_filter &&
+                price_filter_arr.includes(row.dollar_sign) &&
                 (row.neighborhood == neighborhood_filter || row.neighborhood == "NULL")) { return row };
         }
     });
@@ -190,7 +211,7 @@ function generate_random() {
 function remove(array, element) {
     const index = array.indexOf(element);
     var item =  array.splice(index, 1);
-    return item;
+    return item[0];
 }
 
 d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
@@ -206,17 +227,18 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
         event.preventDefault();
         var input_searches = objectifyForm($(this).serializeArray());
 
-        filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
-        console.log("results going into card generation from USER SELECTION");
-        console.log(filtered_results)
+        //TODO NEED TO SERIALIZE AND RECEIVE PRICE CHECKBOX INPUT
 
-        // this will remove and return an item, and mutate filtered_results
+        filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
+        // console.log("results going into card generation from USER SELECTION");
+        // console.log(filtered_results)
+
+        // this will remove and return a restaurant object, and mutate filtered_results
         var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
-        //remove current cards and generate new ones here....
         
         // Create card for chosen restuarant
         $('#underLid').empty();
-        createSelectedCard(filtered_results[0])
+        createSelectedCard(randomly_picked_restuarant);
         
         // Create cards for suggested restuarants
         filtered_results.forEach(element => {

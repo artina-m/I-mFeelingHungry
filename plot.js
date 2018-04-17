@@ -62,76 +62,7 @@ function triggerLid(){
 }
 
 
-function createSelectedCard(d) {
-    // Input: Array of resturant info
-    var linkedCard = document.createElement("a")
-    linkedCard.href = d.url;
-    linkedCard.target = "_blank"
-    linkedCard.className = "linkedCard"
-    
-    var card = document.createElement("div");
-    card.className = "selectedCard";
-    card.id = d.name;
-    
-    // Photo
-    var restPhoto = document.createElement("div")
-    restPhoto.id = "r_photo";
 
-    var photo = document.createElement("img")
-    photo.className = "photo"
-    photo.src = d.img_url;
-    restPhoto.appendChild(photo)
-
-    // Details
-    var restInfo = document.createElement("div")
-    restInfo.id = "r_info";
-
-    var para = document.createElement("p");
-    para.id = "r_name"
-    var rest_name = document.createTextNode(d.name);
-    para.appendChild(rest_name);
-    restInfo.appendChild(para);
-
-    // Get only first uppercase element of category types
-    var catArray = [];
-    d.categories.forEach(function(c){
-        c.forEach(function(cat){
-            catArray.push(" " + cat[0])
-        })
-    })
-
-    var para = document.createElement("p");
-    para.id = "r_cat"
-    var rest_cat = document.createTextNode(catArray);
-    para.appendChild(rest_cat);
-    restInfo.appendChild(para)
-    
-    var para = document.createElement("p");
-    para.id = "r_stars"
-    var rest_stars = document.createTextNode("Rating:  " + d.rating );
-    para.appendChild(rest_stars);
-    restInfo.appendChild(para)
-
-    var para = document.createElement("p");
-    para.id = "r_dollars"
-    var rest_dollars = document.createTextNode("Price Range:  " + d.dollar_sign);
-    para.appendChild(rest_dollars);
-    restInfo.appendChild(para)
-    
-    var para = document.createElement("p");
-    para.id = "r_count"
-    var rest_count = document.createTextNode("Review Count:  " + d.review_count);
-    para.appendChild(rest_count);
-    restInfo.appendChild(para)
-
-
-    // Create card
-    card.appendChild(restPhoto)
-    card.appendChild(restInfo)
-    linkedCard.appendChild(card)
-    document.getElementById("underLid").appendChild(linkedCard)
-    
-}
 
 
 function createCard(d) {
