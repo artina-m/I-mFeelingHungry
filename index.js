@@ -213,6 +213,12 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
         // this will remove and return an item, and mutate filtered_results
         var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
         //remove current cards and generate new ones here....
+        
+        // Create card for chosen restuarant
+        $('#underLid').empty();
+        createSelectedCard(filtered_results[0])
+        
+        // Create cards for suggested restuarants
         filtered_results.forEach(element => {
          createCard(element);
       });
@@ -222,7 +228,7 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     $("#random_generator").click(function (){
         filtered_results = generate_random();
         triggerLid()
-         $('#results').empty();
+        $('#results').empty();
         
         console.log("results going into card generation from RANDOM");
         console.log(filtered_results);

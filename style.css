@@ -78,7 +78,7 @@ input:focus{
     display: inline-block;
     font-size: 12px;
     cursor: pointer;
-    border-radius: 15px;
+    border-radius: 10px;
     z-index: 1;
     float: right;
     margin-top: 50px;
@@ -94,7 +94,6 @@ input:focus{
 }
 
 
-
 .rightSide {
     height: 100%;
     width: 950px;
@@ -105,16 +104,97 @@ input:focus{
 }
 
 
- /* Card Style */
-
-
 #animate{
     display: inline;
 }
 
+ /* Main Card Style */
+
+#topLid {
+    position: absolute;
+    display: inline;
+    z-index: 2;
+}
+
+#underLid {
+    position: absolute;
+    z-index: 1;
+    margin-top: 255px;
+    margin-left: 260px;
+}
+
+.selectedCard {
+    display: inline-block;
+    width: 285px;
+    height: 150px;
+    background-color: white;
+    border-radius: 10px;;
+    border: 2px solid lightgrey;
+}
+
+
+.selectedCard:hover{
+    cursor: pointer;
+    border: 2px solid #3498DB
+}
+
+#r_info{
+    width:140px !important;
+    overflow: hidden !important;
+    height: 100%;
+    margin-top: 20px;
+    float: right;
+    margin-right: 10px !important;
+}
+
+#r_photo {
+    float:left;
+    height: 100%;
+    width: 80px;
+}
+
+
+#r_photo img{
+    height: 110px;
+    margin-top: 18px;
+    margin-left: 10px;
+    border-radius: 150px;
+}
+
+#r_name{
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    margin-top: 0px;
+    overflow: hidden !important;
+    text-decoration: none;
+    line-height: 20px;
+}
+
+#r_cat {
+    color: black;
+    margin-top:5px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    text-decoration: none;
+
+}
+
+#r_stars, #r_dollars, #r_count {
+    color: grey;
+    font-size: 10px;
+    margin-bottom: 2px;
+}
+
+
+
+
+ /* Sub Card Style */
+
 #results {
     width: 600px;;
-    height: 220px;
+    height: 180px;
     overflow: auto;
     white-space: nowrap;
     overflow-y: hidden;
@@ -125,31 +205,26 @@ input:focus{
 
 .card {
     display: inline-block !important;
-    width: 140px;
+    width: 120px;
     height: 97%;
     margin-left: 5px;
     margin-top: 5px;
     margin-bottom: 10px;
-    background-color: none;
+    background-color: #efefef !important;
     overflow: hidden;
     z-index: 2;
     align-content: center;
-    border: none ;
+    border: none !important;
 }
 
 .card:hover{
     cursor: pointer;
-    border: 2px solid dimgrey;
+    border: 2px solid #3498DB
 }
 
 .card div{
     overflow: hidden;
     white-space: normal;
-}
-
-
-.photo {
-    height:50;
 }
 
 
@@ -163,20 +238,33 @@ input:focus{
 }
 
 #rest_photo img{
-    width:80%;
-    margin-top: 10px;
-    border-radius: 150px;
+    width:100%;
+    border-radius: 100px;
+    display: inline;
+    opacity: 0.6;
+    
+}
+
+
+#rest_photo {
+    width:90%;
+    background-color: black;
+    border-radius: 200px;
+    margin-left: 5px;
+    margin-top: 5px;
 }
 
 #rest_name{
-    color: black;
+    color: white;
+    width: 80px;
     font-size: 12px;
-    font-weight: 600;
-    margin-bottom: 5px;
-    margin-top: 0px;
-    overflow: hidden !important;
+    font-weight: 400;
     text-decoration: none;
-
+    line-height: 12px;
+    position: absolute;
+    top: 50px;
+    margin-left: 5px;
+    margin-right; 10px;
 }
 
 #rest_cat {
@@ -185,6 +273,7 @@ input:focus{
     font-size: 10px;
     margin-bottom: 5px;
     text-decoration: none;
+    line-height: 10px;
 
 }
 

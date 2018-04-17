@@ -1,4 +1,3 @@
-// Add images to foreground and background
 var vizSVG = d3.select("#animate")
       .append("svg")
       .attr("class", "vizSVG")
@@ -10,20 +9,23 @@ vizSVG.append("image")
     .attr("x", 150)
     .attr("y", 300)
     .attr("width", 500)
-    .style("z-index", 1)
+    .style("z-index", 0)
 
-//vizSVG.append("line")
-//    .attr("x1", 250).attr("x2", 500)
-//    .attr("y1", 400).attr("y2", 400)
-//    .attr("stroke", "lightgrey")
-vizSVG.append("image")
+
+var vizSVG2 = d3.select("#topLid")
+      .append("svg")
+      .attr("class", "vizSVG2")
+      .attr("width", "800")
+      .attr("height", "500px")
+
+vizSVG2.append("image")
     .attr("xlink:href","lid.png")
     .attr("class", "lid")
     .attr("id", "lid")
     .attr("x", 180)
     .attr("y", 135)
     .attr("width", 450)
-    .style("z-index", 10)
+    .style("z-index", 1)
 
 // Functions to trigger animation
 function openLid(){
@@ -31,6 +33,12 @@ function openLid(){
     lid.transition()
     .attr("transform", "rotate(45)")
     .attr("x", 300).attr("y", -550)
+    
+    setTimeout(function(){
+        $("#underLid").css({"z-index" : 5})
+    $("#topLid").css({"z-index" :1})
+    }, 200)
+     
 }
 
 function closeLid(){
@@ -45,11 +53,85 @@ function closeLid(){
 
 
 function triggerLid(){
+    $("#underLid").css({"z-index" : 1})
+    $("#topLid").css({"z-index" : 5})
     closeLid()
-    // Do something
+    
     setTimeout(openLid, 500)
+    // Change the index
 }
 
+
+function createSelectedCard(d) {
+    // Input: Array of resturant info
+    var linkedCard = document.createElement("a")
+    linkedCard.href = d.url;
+    linkedCard.target = "_blank"
+    linkedCard.className = "linkedCard"
+    
+    var card = document.createElement("div");
+    card.className = "selectedCard";
+    card.id = d.name;
+    
+    // Photo
+    var restPhoto = document.createElement("div")
+    restPhoto.id = "r_photo";
+
+    var photo = document.createElement("img")
+    photo.className = "photo"
+    photo.src = d.img_url;
+    restPhoto.appendChild(photo)
+
+    // Details
+    var restInfo = document.createElement("div")
+    restInfo.id = "r_info";
+
+    var para = document.createElement("p");
+    para.id = "r_name"
+    var rest_name = document.createTextNode(d.name);
+    para.appendChild(rest_name);
+    restInfo.appendChild(para);
+
+    // Get only first uppercase element of category types
+    var catArray = [];
+    d.categories.forEach(function(c){
+        c.forEach(function(cat){
+            catArray.push(" " + cat[0])
+        })
+    })
+
+    var para = document.createElement("p");
+    para.id = "r_cat"
+    var rest_cat = document.createTextNode(catArray);
+    para.appendChild(rest_cat);
+    restInfo.appendChild(para)
+    
+    var para = document.createElement("p");
+    para.id = "r_stars"
+    var rest_stars = document.createTextNode("Rating:  " + d.rating );
+    para.appendChild(rest_stars);
+    restInfo.appendChild(para)
+
+    var para = document.createElement("p");
+    para.id = "r_dollars"
+    var rest_dollars = document.createTextNode("Price Range:  " + d.dollar_sign);
+    para.appendChild(rest_dollars);
+    restInfo.appendChild(para)
+    
+    var para = document.createElement("p");
+    para.id = "r_count"
+    var rest_count = document.createTextNode("Review Count:  " + d.review_count);
+    para.appendChild(rest_count);
+    restInfo.appendChild(para)
+
+
+    // Create card
+    card.appendChild(restPhoto)
+    card.appendChild(restInfo)
+    linkedCard.appendChild(card)
+    document.getElementById("underLid").appendChild(linkedCard)
+    
+}
 
 
 function createCard(d) {
@@ -84,39 +166,20 @@ function createCard(d) {
     para.appendChild(rest_name);
     restInfo.appendChild(para);
 
-    // Get only first uppercase element of category types
-    var catArray = [];
-    d.categories.forEach(function(c){
-        c.forEach(function(cat){
-            catArray.push(" " + cat[0])
-        })
-    })
-
-    var para = document.createElement("p");
-    para.id = "rest_cat"
-    var rest_cat = document.createTextNode(catArray);
-    para.appendChild(rest_cat);
-    restInfo.appendChild(para)
-
-//    var para = document.createElement("p");
-//    para.id = "rest_stars"
-//    var rest_stars = document.createTextNode("  " + d.rating + "   ");
-//    para.appendChild(rest_stars);
-//    restInfo.appendChild(para)
+//    // Get only first uppercase element of category types
+//    var catArray = [];
+//    d.categories.forEach(function(c){
+//        c.forEach(function(cat){
+//            catArray.push(" " + cat[0])
+//        })
+//    })
 //
 //    var para = document.createElement("p");
-//    para.id = "rest_dollars"
-//    var rest_dollars = document.createTextNode(d.dollar_sign);
-//    para.appendChild(rest_dollars);
+//    para.id = "rest_cat"
+//    var rest_cat = document.createTextNode(catArray);
+//    para.appendChild(rest_cat);
 //    restInfo.appendChild(para)
-//
-//    var para = document.createElement("a");
-//    para.id = "rest_website"
-//    para.href = d.url
-//    para.target = "_blank"
-//    var rest_website = document.createTextNode("Reviews");
-//    para.appendChild(rest_website);
-//    restInfo.appendChild(para)
+
 
     // Create card
     card.appendChild(restPhoto)
