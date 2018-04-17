@@ -128,8 +128,7 @@ function cleanse_row(row) {
 // filters based on 'categories', 'dollar_sign', 'neighborhood'. 
 // returns array of matched restaurant objects
 function filter_search(data, category_filter, price_filter_arr, neighborhood_filter, ) {
-
-    // console.log(category_filter, price_filter_arr, neighborhood_filter);
+    console.log(category_filter, price_filter_arr, neighborhood_filter);
 
     var filtered = data.filter(function (row) {
         // console.log(row.categories, category_filter);
@@ -153,7 +152,12 @@ function filter_search(data, category_filter, price_filter_arr, neighborhood_fil
         }
     });
     // drop dups in the data
-    return removeDuplicates(filtered, "name");
+    var pos = removeDuplicates(filtered, "name");
+
+    if (pos.length < 1){return zero_matches()}
+    else{return pos}
+    
+    // return ;
 };
 
 
@@ -224,7 +228,14 @@ function append_empty_searches(){
     $('#underLid').append(empty);
 }
 
-d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
+function zero_matches() {
+    const empty = '<div class="selectedCard" id="Mirisola\'s"><div id="empty_info"><p id="r_name">No Matches Found :(</p></div></div>'
+    $('#underLid').append(empty);
+}
+
+
+
+d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
     data = d;
     var filtered_results;
     // console.log("Cleaned data:");
@@ -234,8 +245,19 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     $("form").on("submit", function (event) {
         triggerLid()
         $('#results').empty();
+        $('#underLid').empty();
         event.preventDefault();
         var input_searches = objectifyForm($(this).serializeArray());
+        
+        var price_filters =[]
+        $(':checkbox:checked').each(function (i) {
+            price_filters[i] = $(this).val();
+        });
+        // console.log(price_filters);
+        input_searches.price_filter = price_filters;
+
+        
+        console.log(input_searches);
 
         // if they fail to enter a search_category
         if (input_searches.category_filter == ""){
@@ -251,7 +273,7 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
             console.log("randomly_picked:");
             console.log(randomly_picked_restuarant);
             // Create card for chosen restuarant
-            $('#underLid').empty();
+            
 
             
             setTimeout(() => {
