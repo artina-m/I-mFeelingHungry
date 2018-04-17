@@ -229,8 +229,12 @@ function append_empty_searches(){
 }
 
 function zero_matches() {
+    $('#underLid').empty()
     const empty = '<div class="selectedCard" id="Mirisola\'s"><div id="empty_info"><p id="r_name">No Matches Found :(</p></div></div>'
-    $('#underLid').append(empty);
+    setTimeout(() => {
+        $('#underLid').append(empty);    
+    }, 650);
+    
 }
 
 
@@ -261,7 +265,9 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
 
         // if they fail to enter a search_category
         if (input_searches.category_filter == ""){
-            append_empty_searches()
+            setTimeout(() => {
+                append_empty_searches()    
+            }, 650);
         }else{
             filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
             console.log("filtered_results:");
