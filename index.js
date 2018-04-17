@@ -296,6 +296,7 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
         triggerLid()
         $('#results').empty();
         $('#underLid').empty();
+        $("#mySearch").val("");
         
         console.log("results going into card generation from RANDOM");
         console.log(filtered_results);
