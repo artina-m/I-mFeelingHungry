@@ -1,8 +1,9 @@
 // will hold csv data
 var data;
+
 function createSelectedCard(d) {
-    console.log("entering createSelectedCard");
-    console.log(d);
+    // console.log("entering createSelectedCard");
+    // console.log(d);
     // Input: Array of resturant info
     var linkedCard = document.createElement("a")
     linkedCard.href = d.url;
@@ -20,6 +21,7 @@ function createSelectedCard(d) {
     var photo = document.createElement("img")
     photo.className = "photo"
     photo.src = d.img_url;
+    // photo.src = d.img_url;
     restPhoto.appendChild(photo)
 
     // Details
@@ -214,6 +216,14 @@ function remove(array, element) {
     return item[0];
 }
 
+// append an empty card if there's no search category inputted
+function append_empty_searches(){
+
+    const empty = '<div class="selectedCard" id="Mirisola\'s"><div id="empty_info"><p id="r_name">Please select a Category!</p></div></div>' 
+    console.log("appending....");
+    $('#underLid').append(empty);
+}
+
 d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     data = d;
     var filtered_results;
@@ -227,23 +237,35 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
         event.preventDefault();
         var input_searches = objectifyForm($(this).serializeArray());
 
-        //TODO NEED TO SERIALIZE AND RECEIVE PRICE CHECKBOX INPUT
+        // if they fail to enter a search_category
+        if (input_searches.category_filter == ""){
+            append_empty_searches()
+        }else{
+            filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
+            console.log("filtered_results:");
+            console.log(filtered_results);
 
-        filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
-        // console.log("results going into card generation from USER SELECTION");
-        // console.log(filtered_results)
+            // this will remove and return a restaurant object, and mutate filtered_results
+            var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
+            
+            console.log("randomly_picked:");
+            console.log(randomly_picked_restuarant);
+            // Create card for chosen restuarant
+            $('#underLid').empty();
 
-        // this will remove and return a restaurant object, and mutate filtered_results
-        var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
-        
-        // Create card for chosen restuarant
-        $('#underLid').empty();
-        createSelectedCard(randomly_picked_restuarant);
-        
-        // Create cards for suggested restuarants
-        filtered_results.forEach(element => {
-         createCard(element);
-      });
+            
+            setTimeout(() => {
+                createSelectedCard(randomly_picked_restuarant);
+                // Create cards for suggested restuarants
+                filtered_results.forEach(element => {
+                    createCard(element);
+                });
+            }, 650);
+
+      
+
+
+    }
     });
 
     // handle random generation
@@ -251,10 +273,15 @@ d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
         filtered_results = generate_random();
         triggerLid()
         $('#results').empty();
+        $('#underLid').empty();
         
         console.log("results going into card generation from RANDOM");
         console.log(filtered_results);
-        //remove current cards and generate new ones here....
+
+        setTimeout(() => {
+            createSelectedCard(filtered_results)
+        }, 650);
+
 
     });
 

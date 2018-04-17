@@ -84,7 +84,9 @@ function createCard(d) {
 
     var photo = document.createElement("img")
     photo.className = "photo"
+    // photo.src = d.img_url;
     photo.src = d.img_url;
+
     restPhoto.appendChild(photo)
 
     // Details

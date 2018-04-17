@@ -370,3 +370,7 @@ input:focus{
     width: 245px;
 }
 
+#empty_info{
+    margin-top: 15%;
+    text-align: center;
+}

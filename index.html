@@ -57,7 +57,6 @@
 
 
 
-
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -76,19 +75,21 @@
             </p>
 
             <div class="switch-field">
-                
-                <input type="radio" id="switch_3_left" name="price_filter" value="$" checked/>
+                <input type="checkbox" id="switch_3_left" name="price_filter" value="$" checked/>
                 <label for="switch_3_left">$</label>
 
-                <input type="radio" id="switch_3_center" name="price_filter" value="$$" />
+                <input type="checkbox" id="switch_3_center" name="price_filter" value="$$" />
                 <label for="switch_3_center">$$</label>
 
-                <input type="radio" id="switch_3_right" name="price_filter" value="$$$" />
+                <input type="checkbox" id="switch_3_right" name="price_filter" value="$$$" />
                 <label for="switch_3_right">$$$</label>
 
-                <input type="radio" id="switch_4_right" name="price_filter" value="$$$$" />
+                <input type="checkbox" id="switch_4_right" name="price_filter" value="$$$$" />
                 <label for="switch_4_right">$$$$</label>
-            </div>
+            </div> 
+
+
+
             <select id = "neighborhood_filter" name="neighborhood_filter">
                 <option value="ANY">All Locations </option>
                 <option value="Financial District"> Financial District </option>
