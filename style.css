@@ -194,7 +194,7 @@ input:focus{
 
 #results {
     width: 600px;;
-    height: 180px;
+    height: 135px;
     overflow: auto;
     white-space: nowrap;
     overflow-y: hidden;
