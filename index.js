@@ -21,7 +21,6 @@ function createSelectedCard(d) {
     var photo = document.createElement("img")
     photo.className = "photo"
     photo.src = d.img_url;
-    // photo.src = d.img_url;
     restPhoto.appendChild(photo)
 
     // Details
@@ -87,13 +86,14 @@ function isInArray(arr, match_term) {
     return total_array.includes(match_term);
 
 }
+//remove and return element from array
 function remove(array, element) {
     const index = array.indexOf(element);
     var item = array.splice(index, 1);
     return item;
 }
 
-// theres duplicate rows in the data. For some reason it's true but hard to tell the difference between the objects, this will just filter out by name of restaurant
+// theres duplicate rows in the data, this will eliminate them
 function removeDuplicates(arr, prop) {
     var obj = {};
     for (var i = 0, len = arr.length; i < len; i++) {
@@ -131,10 +131,6 @@ function filter_search(data, category_filter, price_filter_arr, neighborhood_fil
     console.log(category_filter, price_filter_arr, neighborhood_filter);
 
     var filtered = data.filter(function (row) {
-        // console.log(row.categories, category_filter);
-        // console.log(row.dollar_sign, price_filter_arr);
-        // console.log(row.neighborhood_filter, row.neighborhood);
-
         // for 'Any' search on neighborhood
         if (neighborhood_filter == "ANY") {
             if (
@@ -151,13 +147,10 @@ function filter_search(data, category_filter, price_filter_arr, neighborhood_fil
                 (row.neighborhood == neighborhood_filter || row.neighborhood == "NULL")) { return row };
         }
     });
-    // drop dups in the data
+    // drop duplicatess in the data
     var pos = removeDuplicates(filtered, "name");
-
-    if (pos.length < 1){return zero_matches()}
-    else{return pos}
-    
-    // return ;
+    // return cards or no match
+    if (pos.length < 1){return zero_matches()} else{return pos}
 };
 
 
@@ -167,7 +160,7 @@ function randomRestaurant(restaurant_arr){
 }
 
 
-// used in dynamic generation of catgeories
+// // used in dynamic generation of catgeories
 
 // function combine(multiarr) {
 //     return multiarr.map((arr) => arr.map((y) => y[1]));
@@ -186,7 +179,7 @@ function randomRestaurant(restaurant_arr){
 //     return Array.from(set);
 // }
 
-// these can be dynanmically generated, but this method saves computation time
+// these can be dynanmically generated with the functions above, but as they're static, might as well save the computation time
 
 const prices = ["$", "$$", "$$$", "$$$$"];
 
@@ -194,7 +187,7 @@ const categories = { "Breakfast & Brunch": "breakfast_brunch", "Burgers": "burge
 
 const neighborhoods = ["Financial District", "North End", "Waterfront", "East Boston", "Downtown", "South End", "NULL", "Beacon Hill", "Back Bay", "South Boston", "Chinatown", "Allston/Brighton", "Charlestown", "Kendall Square/MIT", "Dorchester", "Teele Square", "Jamaica Plain", "Inman Square", "Harvard Square", "Fenway", "Mission Hill", "Porter Square", "North Cambridge", "West Roxbury", "Coolidge Corner"];
 
-
+// Populate category search on keydown
 $("#mySearch").autocomplete({
     source: Object.keys(categories)
 });
@@ -222,12 +215,11 @@ function remove(array, element) {
 
 // append an empty card if there's no search category inputted
 function append_empty_searches(){
-
     const empty = '<div class="selectedCard" id="Mirisola\'s"><div id="empty_info"><p id="r_name">Please select a Category!</p></div></div>' 
     console.log("appending....");
     $('#underLid').append(empty);
 }
-
+// append an empty card if there's no matches 
 function zero_matches() {
     $('#underLid').empty()
     const empty = '<div class="selectedCard" id="Mirisola\'s"><div id="empty_info"><p id="r_name">No Matches Found :(</p></div></div>'
@@ -238,8 +230,8 @@ function zero_matches() {
 }
 
 
-
-d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
+// Load data
+d3.csv("yelp_cats_boston.csv", cleanse_row, function (d) {
     data = d;
     var filtered_results;
     // console.log("Cleaned data:");
@@ -260,9 +252,6 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
         // console.log(price_filters);
         input_searches.price_filter = price_filters;
 
-        
-        console.log(input_searches);
-
         // if they fail to enter a search_category
         if (input_searches.category_filter == ""){
             setTimeout(() => {
@@ -270,18 +259,11 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
             }, 650);
         }else{
             filtered_results = filter_search(data, categories[input_searches.category_filter], input_searches.price_filter, input_searches.neighborhood_filter);
-            console.log("filtered_results:");
-            console.log(filtered_results);
 
             // this will remove and return a restaurant object, and mutate filtered_results
             var randomly_picked_restuarant = remove(filtered_results, randomRestaurant(filtered_results));
             
-            console.log("randomly_picked:");
-            console.log(randomly_picked_restuarant);
-            // Create card for chosen restuarant
-            
-
-            
+            // generate cards on timeout for ~aesthetics
             setTimeout(() => {
                 createSelectedCard(randomly_picked_restuarant);
                 // Create cards for suggested restuarants
@@ -289,10 +271,6 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
                     createCard(element);
                 });
             }, 650);
-
-      
-
-
     }
     });
 
@@ -304,53 +282,10 @@ d3.csv("yelp_cats_boston2.csv", cleanse_row, function (d) {
         $('#underLid').empty();
         $("#mySearch").val("");
         
-        console.log("results going into card generation from RANDOM");
-        console.log(filtered_results);
-
         setTimeout(() => {
             createSelectedCard(filtered_results)
         }, 650);
 
 
     });
-
-    
-
-
-
-    // generate unique categories from the data
-    // let uniqueCats = uniqueCategories(data);
-    // console.log(uniqueCats);
-   
-
-    // tests for output on various filters....
-    
-    // 8 results
-    // let filtered_results = filter_search(data, "sandwiches", "$", "Financial District");
-    
-    // 3 results
-    // let filtered_results = filter_search(data, "italian", "$", "Financial District");
-    
-    // 3 results
-    // let filtered_results = filter_search(data, "cafes", "$", "Financial District");
-    
-    // 7 results, but also img error
-    // let filtered_results = filter_search(data, "indpak", "$$", "Allston/Brighton");
-    
-    // 2 results
-    // let filtered_results = filter_search(data, "pizza", "$$", "East Boston");
-    
-    // 6 results
-    // let filtered_results = filter_search(data, "mexican", "$", "East Boston");
-
-    // console.log("filtered_results of a test filter:");
-    // console.log(filtered_results);
-    // console.log("random restaurant from this filtered array:");
-    // console.log(randomRestaurant(filtered_results));
-
-//     // render a card 
-//     filtered_results.forEach(element => {
-//         createCard(element);
-//     });
-
 });

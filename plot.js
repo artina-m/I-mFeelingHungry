@@ -1,8 +1,8 @@
 var vizSVG = d3.select("#animate")
-      .append("svg")
-      .attr("class", "vizSVG")
-      .attr("width", "100%")
-      .attr("height", "500px")
+    .append("svg")
+    .attr("class", "vizSVG")
+    .attr("width", "100%")
+    .attr("height", "500px")
 
 vizSVG.append("image")
     .attr("xlink:href","plate.png")
@@ -13,10 +13,10 @@ vizSVG.append("image")
 
 
 var vizSVG2 = d3.select("#topLid")
-      .append("svg")
-      .attr("class", "vizSVG2")
-      .attr("width", "800")
-      .attr("height", "500px")
+    .append("svg")
+    .attr("class", "vizSVG2")
+    .attr("width", "800")
+    .attr("height", "500px")
 
 vizSVG2.append("image")
     .attr("xlink:href","lid.png")
@@ -49,9 +49,6 @@ function closeLid(){
 }
 
 
-// Geneate restaurant
-
-
 function triggerLid(){
     $("#underLid").css({"z-index" : 1})
     $("#topLid").css({"z-index" : 5})
@@ -60,9 +57,6 @@ function triggerLid(){
     setTimeout(openLid, 500)
     // Change the index
 }
-
-
-
 
 
 function createCard(d) {
@@ -98,21 +92,6 @@ function createCard(d) {
     var rest_name = document.createTextNode(d.name);
     para.appendChild(rest_name);
     restInfo.appendChild(para);
-
-//    // Get only first uppercase element of category types
-//    var catArray = [];
-//    d.categories.forEach(function(c){
-//        c.forEach(function(cat){
-//            catArray.push(" " + cat[0])
-//        })
-//    })
-//
-//    var para = document.createElement("p");
-//    para.id = "rest_cat"
-//    var rest_cat = document.createTextNode(catArray);
-//    para.appendChild(rest_cat);
-//    restInfo.appendChild(para)
-
 
     // Create card
     card.appendChild(restPhoto)

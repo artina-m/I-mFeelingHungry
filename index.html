@@ -5,173 +5,118 @@
 <!--[if gt IE 8]><!-->
 <html class="no-js">
 <!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>I'm Feeling Hungry</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous"> <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="slick/slick.css">
-  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css">
-  <style type="text/css">
-    html, body {
-      margin: 0;
-      padding: 0;
-    }
-    * {
-      box-sizing: border-box;
-    }
-    .slider {
-        width: 50%;
-        margin: 100px auto;
-    }
-    .slick-slide {
-      margin: 0px 20px;
-    }
-    .slick-slide img {
-      width: 100%;
-    }
-    .slick-prev:before,
-    .slick-next:before {
-      color: black;
-    }
-    .slick-slide {
-      transition: all ease-in-out .3s;
-      opacity: .2;
-    }
-    
-    .slick-active {
-      opacity: .5;
-    }
-    .slick-current {
-      opacity: 1;
-    }
-  </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-
-
-
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     <div class="leftSide">
         <!-- Title, Description, Filters -->
         <form class="form">
 
-        <div class = "filterDiv">
-            <p class="mainTitle">I'm feeling... <br>
-            
-                <!-- <input id = "mySearch" type = "search" placeholder = "Italian" autofocus/></p> -->
-                <div class="ui-widget">
-                    <input id="mySearch" placeholder="Italian" name="category_filter"  autofocus>
+            <div class="filterDiv">
+                <p class="mainTitle">I'm feeling...
+                    <br>
+                    <div class="ui-widget">
+                        <input id="mySearch" placeholder="Italian" name="category_filter" autofocus>
+                    </div>
+                </p>
+
+                <div class="switch-field">
+                    <input type="checkbox" id="switch_3_left" name="price_filter" value="$" checked/>
+                    <label for="switch_3_left">$</label>
+
+                    <input type="checkbox" id="switch_3_center" name="price_filter" value="$$" />
+                    <label for="switch_3_center">$$</label>
+
+                    <input type="checkbox" id="switch_3_right" name="price_filter" value="$$$" />
+                    <label for="switch_3_right">$$$</label>
+
+                    <input type="checkbox" id="switch_4_right" name="price_filter" value="$$$$" />
+                    <label for="switch_4_right">$$$$</label>
                 </div>
-            </p>
 
-            <div class="switch-field">
-                <input type="checkbox" id="switch_3_left" name="price_filter" value="$" checked/>
-                <label for="switch_3_left">$</label>
-
-                <input type="checkbox" id="switch_3_center" name="price_filter" value="$$" />
-                <label for="switch_3_center">$$</label>
-
-                <input type="checkbox" id="switch_3_right" name="price_filter" value="$$$" />
-                <label for="switch_3_right">$$$</label>
-
-                <input type="checkbox" id="switch_4_right" name="price_filter" value="$$$$" />
-                <label for="switch_4_right">$$$$</label>
-            </div> 
-
-
-
-            <select id = "neighborhood_filter" name="neighborhood_filter">
-                <option value="ANY">All Locations </option>
-                <option value="Financial District"> Financial District </option>
-                <option value="North End"> North End </option>
-                <option value="Waterfront"> Waterfront </option>
-                <option value="East Boston"> East Boston </option>
-                <option value="Downtown"> Downtown </option>
-                <option value="South End"> South End </option>
-                <option value="Beacon Hill"> Beacon Hill </option>
-                <option value="Back Bay"> Back Bay </option>
-                <option value="South Boston"> South Boston </option>
-                <option value="Chinatown"> Chinatown </option>
-                <option value="Allston/Brighton"> Allston/Brighton </option>
-                <option value="Charlestown"> Charlestown </option>
-                <option value="Kendall Square/MIT"> Kendall Square/MIT </option>
-                <option value="Dorchester"> Dorchester </option>
-                <option value="Teele Square"> Teele Square </option>
-                <option value="Jamaic Plain"> Jamaic Plain </option>
-                <option value="Inman Square"> Inman Square </option>
-                <option value="Harvard Square"> Harvard Square </option>
-                <option value="Fenway"> Fenway </option>
-                <option value="Mission Hill"> Mission Hill </option>
-                <option value="Porter Square"> Porter Square </option>
-                <option value="North Cambridge"> North Cambridge </option>
-                <option value="West Roxbury"> West Roxbury </option>
-                <option value="Coolidge Corner"> Coolidge Corne </option>
-
-            </select>
-            <br>
-
-            <input type="submit" name="submit" value = "Find me a resturant!" class = "submitButton"></input> 
+                <select id="neighborhood_filter" name="neighborhood_filter">
+                    <option value="ANY">All Locations </option>
+                    <option value="Financial District"> Financial District </option>
+                    <option value="North End"> North End </option>
+                    <option value="Waterfront"> Waterfront </option>
+                    <option value="East Boston"> East Boston </option>
+                    <option value="Downtown"> Downtown </option>
+                    <option value="South End"> South End </option>
+                    <option value="Beacon Hill"> Beacon Hill </option>
+                    <option value="Back Bay"> Back Bay </option>
+                    <option value="South Boston"> South Boston </option>
+                    <option value="Chinatown"> Chinatown </option>
+                    <option value="Allston/Brighton"> Allston/Brighton </option>
+                    <option value="Charlestown"> Charlestown </option>
+                    <option value="Kendall Square/MIT"> Kendall Square/MIT </option>
+                    <option value="Dorchester"> Dorchester </option>
+                    <option value="Teele Square"> Teele Square </option>
+                    <option value="Jamaic Plain"> Jamaic Plain </option>
+                    <option value="Inman Square"> Inman Square </option>
+                    <option value="Harvard Square"> Harvard Square </option>
+                    <option value="Fenway"> Fenway </option>
+                    <option value="Mission Hill"> Mission Hill </option>
+                    <option value="Porter Square"> Porter Square </option>
+                    <option value="North Cambridge"> North Cambridge </option>
+                    <option value="West Roxbury"> West Roxbury </option>
+                    <option value="Coolidge Corner"> Coolidge Corne </option>
+                </select>
+                <br>
+                <input type="submit" name="submit" value="Find me a resturant!" class="submitButton"></input>
         </form>
         </div>
-        
+
         <div>
             <p class="subTitle">Looking for a place to eat in Boston?</p>
-            <p class="suppText">Feelin Hungry? Satisfy your hunger and sense of exploration by discovering new restaurants in Boston! Enter the category of food you want, the <span style="color:lightskyblue" id="tooltippy" title="$ : Under $10<br>$$ : $11-30<br>$$$ : $31-60<br>$$$$ : Above $61">price range</span> and neighborhood to get started.<br> <br>Feelin lucky? Get a random restaurant with the "Im feeling lucky" buttton </p>
-                
+            <p class="suppText">Feelin Hungry? Satisfy your hunger and sense of exploration by discovering new restaurants in Boston! Enter the category of food you want, the <span style="color:lightskyblue" id="tooltippy" title="$ : Under $10<br>$$ : $11-30<br>$$$ : $31-60<br>$$$$ : Above $61">price range</span> and neighborhood to get started.
+            <br>
+            <br>Feelin lucky? Get a random restaurant with the "Im feeling lucky" buttton </p>
         </div>
-        
 
-        
     </div>
 
-    <div id ="right-mount" class="rightSide">
+    <div id="right-mount" class="rightSide">
         <!-- Visualization -->
-        <!-- Populated by index.js and plot.js -->
-        
-        
-        <div id = "animate">
-            <div id = "underLid"></div>
-            <div id = "topLid"></div>
-            <button id="random_generator" class ="button">I'm feeling lucky</button>
-        </div>
-        
-       
-        
-        <div style = "text-align:center;">
-        <div id = "results"></div>
-        </div>
-        
-            <!-- Add cards -->
-        </div>
-    
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <div id="animate">
+            <div id="underLid"></div>
+            <div id="topLid"></div>
+            <button id="random_generator" class="button">I'm feeling lucky</button>
+        </div>
+
+        <div style="text-align:center;">
+            <div id="results"></div>
+        </div>
+
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
-    <script src="http://d3js.org/topojson.v2.min.js"></script>
     <script src="tippy.all.min.js"></script>
     <script src="index.js"></script>
     <script src="plot.js"></script>
-    
-  <script src="https://code.jquery.com/jquery-2.2.0.min.js" type="text/javascript"></script>
-  <script src="./slick/slick.js" type="text/javascript" charset="utf-8"></script>
-    <script src="trial.js" type="text/javascript"></script>
-
     <script>
         tippy('#tooltippy')
     </script>
-      
 </body>
 
 
